@@ -1,0 +1,84 @@
+version: "4.1"
+name: Parpadeo_LED
+type: RISC-V
+deviceName: null
+packDir: null
+srcDirs:
+  - Librerias/Firmware/GD32VW55x_standard_peripheral/Source
+  - Librerias/Firmware/RISCV/env_Eclipse
+  - Librerias/Firmware/GD32VW55x_standard_peripheral
+  - User App
+  - Librerias/Utilities
+virtualFolder:
+  name: <virtual_root>
+  files: []
+  folders: []
+dependenceList: []
+outDir: build
+miscInfo:
+  uid: 7901a5b5072c60ce633b1458709bc6e3
+targets:
+  Debug:
+    cppPreprocessAttrs:
+      defineList: []
+      incList:
+        - Librerias
+        - Librerias/Firmware/GD32VW55x_standard_peripheral/Include
+        - Librerias/Firmware/RISCV/drivers
+        - Librerias/Firmware/GD32VW55x_standard_peripheral
+        - .
+        - User App
+        - Librerias/Utilities
+      libList: []
+    excludeList: []
+    settings:
+      debugger: cortex-debug
+    toolchain: RISCV_GCC
+    toolchainConfigMap:
+      RISCV_GCC:
+        linkerScriptPath: Librerias/Firmware/RISCV/env_Eclipse/GD32VW553xI.lds
+        options:
+          version: 2
+          afterBuildTasks: []
+          asm-compiler:
+            ASM_FLAGS: -Wl,-Bstatic
+          beforeBuildTasks: []
+          c/cpp-compiler:
+            C_FLAGS: -Wl,-Bstatic
+            language-c: c11
+            language-cpp: c++11
+            one-elf-section-per-data: true
+            one-elf-section-per-function: true
+            optimization: level-debug
+            warnings: all-warnings
+          global:
+            abi: ilp32
+            arch: rv32imac
+            code-model: medlow
+            misc-control: --specs=nosys.specs --specs=nano.specs
+            output-debug-info: enable
+          linker:
+            $toolName: auto
+            LD_FLAGS: -Wl,--cref -Wl,--no-relax -nostartfiles
+            output-format: elf
+            remove-unused-input-sections: true
+    uploadConfigMap:
+      Custom:
+        bin: C:\Users\victo\OneDrive\Documentos\Parpadeo_LED\build\Debug\Parpadeo_LED.hex
+        commandLine: openocd -f cmsis-dap.cfg -f gd32vw553.cfg -c "init; reset halt; load_image \"C:\\Users\\victo\\OneDrive\\Documentos\\Parpadeo_LED\\build\\Debug\\Parpadeo_LED.bin\" 0x08000000; reg pc 0x08000000; resume; exit"
+        eraseChipCommand: '"C:\Users\victo\Downloads\xpack-openocd-0.12.0-7-win32-x64\xpack-openocd-0.12.0-7\bin\openocd.exe" -s "${workspaceDir}" -f cmsis-dap.cfg -f gd32vw553.cfg -c "init" -c "halt" -c "flash erase_sector 0 0 last" -c "exit"'
+      JLink:
+        baseAddr: ""
+        bin: ""
+        cpuInfo:
+          cpuName: "null"
+          vendor: "null"
+        otherCmds: ""
+        proType: 1
+        speed: 8000
+      OpenOCD:
+        baseAddr: "0x08000000"
+        bin: c:/Users/victo/OneDrive/Documentos/Parpadeo_LED/build/Debug/Parpadeo_LED.hex
+        interface: ${workspaceFolder}/cmsis-dap
+        target: ${workspaceFolder}/gd32vw553
+    uploader: Custom
