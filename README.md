@@ -4,6 +4,7 @@ https://github.com/user-attachments/assets/380d56e5-b2c4-43b2-b6a9-83843e280422
 #Funcionalidad con aislamiento en alimentación
 ##Video
 https://github.com/user-attachments/assets/029efe7b-d700-4488-b754-2f22fa5fe6e2
+
 ##Foto
 <img width="1204" height="1600" alt="image" src="https://github.com/user-attachments/assets/a8ca9432-fb9f-4d45-a02c-d669730452a4" />
 
